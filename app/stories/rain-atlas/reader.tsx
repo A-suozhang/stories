@@ -27,6 +27,7 @@ const portraitLabels: Record<string, string> = {
 };
 
 const TOTAL_STORY_LINES = 107;
+const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const sceneLabels: Record<string, string> = {
   counter: "PUBLIC RAMEN STALL / 01:17",
@@ -65,14 +66,14 @@ function choicesFrom(story: Story): InkChoice[] {
 }
 
 export default function Reader() {
-  const storyRef = useRef<Story | null>(null);
-  if (storyRef.current === null) storyRef.current = createPrimedStory();
+  const [initialStory] = useState(createPrimedStory);
+  const storyRef = useRef<Story>(initialStory);
   const endRef = useRef<HTMLDivElement | null>(null);
   const dialogueRef = useRef<HTMLElement | null>(null);
   const currentLineRef = useRef<HTMLElement | null>(null);
   const portraitRef = useRef<HTMLElement | null>(null);
   const [lines, setLines] = useState<InkLine[]>([]);
-  const [choices, setChoices] = useState<InkChoice[]>(() => choicesFrom(storyRef.current!));
+  const [choices, setChoices] = useState<InkChoice[]>(() => choicesFrom(initialStory));
   const [scene, setScene] = useState("counter");
   const [fontSize, setFontSize] = useState(21);
   const [complete, setComplete] = useState(false);
@@ -97,11 +98,11 @@ export default function Reader() {
     story.ChooseChoiceIndex(choiceIndex);
     let paragraph = "";
     while (story.canContinue && !paragraph) {
-      paragraph = story.Continue().trim();
+      paragraph = story.Continue()?.trim() ?? "";
     }
 
     if (paragraph) {
-      const tags = parseTags(story.currentTags);
+      const tags = parseTags(story.currentTags ?? []);
       const nextLine: InkLine = {
         id: Date.now(),
         text: paragraph,
@@ -190,7 +191,13 @@ export default function Reader() {
   );
 
   return (
-    <main className="reader ink-reader" style={{ "--reader-font-size": `${fontSize}px` } as React.CSSProperties}>
+    <main
+      className="reader ink-reader"
+      style={{
+        "--reader-font-size": `${fontSize}px`,
+        "--scene-image": `url(${assetBasePath}/assets/ramen-talk-painterly-street-v5.webp)`,
+      } as React.CSSProperties}
+    >
       <div className="reader-progress" style={{ width: `${progress}%` }} aria-hidden="true" />
       <header className="reader-topbar">
         <Link className="back" href="/">← 返回作品集</Link>
@@ -215,14 +222,14 @@ export default function Reader() {
           <figure ref={portraitRef} className={`speaker-portrait-dock speaker-portrait-dock--${currentSpeaker}`} key={currentSpeaker}>
             {currentSpeaker === "makoto" ? (
               <img
-                src="/assets/makoto-hoshizawa-profile.png"
+                src={`${assetBasePath}/assets/makoto-hoshizawa-profile.png`}
                 width="1254"
                 height="1254"
                 alt="星沢真（Makoto Hoshizawa）人物肖像"
               />
             ) : (
               <img
-                src="/assets/noe-kurosaki-profile-v2.png"
+                src={`${assetBasePath}/assets/noe-kurosaki-profile-v2.png`}
                 width="1254"
                 height="1254"
                 alt="黑崎诺埃（Noé Kurosaki）人物肖像"
@@ -274,7 +281,7 @@ export default function Reader() {
                   <article className="character-bio character-bio--profile">
                     <img
                       className="character-profile"
-                      src="/assets/makoto-hoshizawa-profile.png"
+                      src={`${assetBasePath}/assets/makoto-hoshizawa-profile.png`}
                       width="1254"
                       height="1254"
                       loading="lazy"
@@ -288,7 +295,7 @@ export default function Reader() {
                   <article className="character-bio character-bio--profile">
                     <img
                       className="character-profile"
-                      src="/assets/noe-kurosaki-profile-v2.png"
+                      src={`${assetBasePath}/assets/noe-kurosaki-profile-v2.png`}
                       width="1254"
                       height="1254"
                       loading="lazy"

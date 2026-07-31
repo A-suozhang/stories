@@ -84,7 +84,8 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(reader, /黑崎诺埃｜Noé Kurosaki/);
   assert.match(reader, /不应存在的生还者/);
   assert.match(reader, /继续生活远比证明究竟是谁在生活更重要/);
-  assert.match(styles, /ramen-talk-painterly-street-v5\.webp/);
+  assert.match(reader, /ramen-talk-painterly-street-v5\.webp/);
+  assert.match(styles, /var\(--scene-image\)/);
   assert.match(styles, /\.ink-line\.speaker-makoto \.ink-copy strong \{ color: var\(--makoto-name\); \}/);
   assert.match(styles, /\.ink-line\.speaker-noe \.ink-copy strong \{ color: var\(--noe-name\); \}/);
   assert.match(styles, /\.ink-line\.environment \.ink-copy/);

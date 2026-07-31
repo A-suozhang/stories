@@ -191,7 +191,7 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
   background-color: #0a1112;
   background-image:
     linear-gradient(90deg, rgba(3,8,8,.08) 0%, transparent 58%, rgba(2,4,4,.38) 100%),
-    url("/assets/ramen-talk-painterly-street-v5.webp");
+    var(--scene-image);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
