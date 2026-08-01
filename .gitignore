@@ -21,6 +21,7 @@
 # misc
 .DS_Store
 *.pem
+*.story-studio-*.tmp
 
 # debug
 npm-debug.log*

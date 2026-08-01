@@ -227,6 +227,12 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
 }
 .speaker-portrait-dock img,
 .speaker-portrait-inline img { height: auto; filter: saturate(.82) contrast(1.06); }
+.speaker-portrait-dock--makoto-thought img,
+.speaker-portrait-inline--makoto-thought img {
+  filter: saturate(.68) contrast(1.08) brightness(.88);
+  border-color: color-mix(in srgb, var(--makoto-name) 48%, transparent);
+  box-shadow: 0 20px 58px rgba(0,0,0,.62), 0 0 28px rgba(121,207,196,.12), 0 0 0 8px rgba(5,6,5,.18);
+}
 .speaker-portrait-dock figcaption,
 .speaker-portrait-inline figcaption {
   margin-top: 9px;
@@ -236,6 +242,8 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
   text-align: center;
   text-shadow: 0 2px 8px #000;
 }
+.speaker-portrait-dock--makoto-thought figcaption,
+.speaker-portrait-inline--makoto-thought figcaption { color: color-mix(in srgb, var(--makoto-name) 78%, #d8d5c4); }
 .speaker-portrait-inline { display: none; }
 .dialogue-panel {
   background:

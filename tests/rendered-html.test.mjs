@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 async function render(path = "/") {
@@ -56,8 +56,10 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.doesNotMatch(ink, /#PORTRAIT:/);
   assert.match(ink, /#SCENE: diagnostic/);
   assert.match(ink, /#SCENE: reconnect/);
-  assert.match(ink, /=== beat_150 ===[\s\S]*?\* \[继续 ▸\] -> beat_151/);
-  assert.match(ink, /=== beat_151 ===[\s\S]*?\* \[结束对话 ■\] -> ending/);
+  assert.match(ink, /=== beat_001 ===[\s\S]*?等待比追踪更诚实[\s\S]*?#SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: counter/);
+  assert.match(ink, /=== beat_157 ===[\s\S]*?\* \[继续 ▸\] -> beat_158/);
+  assert.match(ink, /他的薄情是故障，你的薄情被系统登记成了人格/);
+  assert.match(ink, /=== beat_158 ===[\s\S]*?愿不愿意让感觉改变自己[\s\S]*?\* \[结束对话 ■\] -> ending/);
   assert.match(reader, /lines\.map\(\(line, index\)/);
   assert.match(reader, /const isEnvironment = line\.speaker === "narration" \|\| line\.className === "environment"/);
   assert.match(reader, /const speakerLabel = line\.className === "thought"/);
@@ -67,15 +69,29 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(reader, /speaker-\$\{line\.speaker\}/);
   assert.match(reader, /index === lines\.length - 1 \? "current" : "past"/);
   assert.match(reader, /useState\(21\)/);
-  assert.match(reader, /const TOTAL_STORY_LINES = 151/);
+  assert.match(reader, /const TOTAL_STORY_LINES = 158/);
   assert.doesNotMatch(reader, /ink-portrait|tags\.PORTRAIT/);
   assert.match(reader, /星沢真｜Makoto Hoshizawa/);
   assert.match(reader, /makoto-hoshizawa-profile\.png/);
+  assert.match(reader, /makoto-inner-thought-profile\.png/);
+  assert.match(reader, /makoto-inner-persona-01\.jpg/);
+  assert.match(reader, /makoto-inner-persona-02\.jpg/);
+  assert.match(reader, /makoto-inner-persona-03\.jpg/);
+  assert.match(reader, /makoto-inner-persona-04\.jpg/);
+  assert.match(reader, /line\.speaker === "makoto" && line\.className === "thought"/);
+  assert.match(reader, /portraits\[`makoto-\$\{line\.persona\}`\]/);
+  assert.match(reader, /persona: tags\.PERSONA \|\| ""/);
+  assert.match(reader, /MAKOTO \/ INNER VOICE/);
+  assert.match(reader, /MAKOTO \/ MACHIAVELLIAN KING/);
+  assert.match(reader, /MAKOTO \/ INNER COURT/);
+  assert.match(reader, /MAKOTO \/ CYNIC JESTER/);
+  assert.match(reader, /MAKOTO \/ SOCRATIC GADFLY/);
+  assert.match(reader, /speaker-portrait-dock--\$\{currentPortrait\.kind\}/);
+  assert.match(reader, /speaker-portrait-inline--\$\{linePortrait\.kind\}/);
   assert.match(reader, /星沢真（Makoto Hoshizawa）人物肖像/);
-  assert.match(reader, /const currentSpeaker = complete \? undefined : lines\[lines\.length - 1\]\?\.speaker/);
-  assert.match(reader, /speaker-portrait-dock--\$\{currentSpeaker\}/);
-  assert.match(reader, /speaker-portrait-inline--\$\{line\.speaker\}/);
-  assert.match(reader, /index === lines\.length - 1 && portraitLabels\[line\.speaker\]/);
+  assert.match(reader, /星沢真（Makoto Hoshizawa）的内心意象/);
+  assert.match(reader, /const currentLine = complete \? undefined : lines\[lines\.length - 1\]/);
+  assert.match(reader, /index === lines\.length - 1 && linePortrait/);
   assert.match(reader, /currentLineRef\.current\?\.scrollIntoView\(\{ behavior: "smooth", block: "center" \}\)/);
   assert.match(reader, /const rect = line\.getBoundingClientRect\(\)/);
   assert.match(reader, /scroller\?\.addEventListener\("scroll", requestSync/);
@@ -94,6 +110,23 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(styles, /\.ink-line\.speaker-noe \.ink-copy strong \{ color: var\(--noe-name\); \}/);
   assert.match(styles, /\.ink-line\.environment \.ink-copy/);
   assert.match(styles, /\.ink-line\.thought \.ink-copy/);
+  assert.match(styles, /\.speaker-portrait-dock--makoto-thought img/);
   assert.match(packageJson, /"inkjs"/);
   assert.match(packageJson, /"story:compile"/);
+});
+
+test("ships all four Makoto inner persona portraits", async () => {
+  const [portraits, lore] = await Promise.all([
+    Promise.all(
+    ["01", "02", "03", "04"].map((number) => (
+      stat(new URL(`../public/assets/makoto-inner-persona-${number}.jpg`, import.meta.url))
+    )),
+    ),
+    readFile(new URL("../content/characters/makoto-inner-personas.md", import.meta.url), "utf8"),
+  ]);
+  portraits.forEach((portrait) => assert.ok(portrait.size > 1000));
+  assert.match(lore, /马基雅维利国王：权力与生存人格/);
+  assert.match(lore, /康德的内在法庭：道德审判人格/);
+  assert.match(lore, /第欧根尼与犬儒小丑：社会防御人格/);
+  assert.match(lore, /苏格拉底牛虻：求知与追问人格/);
 });

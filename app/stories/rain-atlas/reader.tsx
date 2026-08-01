@@ -11,9 +11,18 @@ type InkLine = {
   speaker: string;
   className: string;
   scene: string;
+  persona: string;
 };
 
 type InkChoice = { index: number; text: string };
+
+type PortraitSpec = {
+  key: string;
+  kind: "makoto" | "makoto-thought" | "noe";
+  src: string;
+  label: string;
+  alt: string;
+};
 
 const speakers: Record<string, string> = {
   makoto: "星沢真 / MAKOTO",
@@ -21,12 +30,73 @@ const speakers: Record<string, string> = {
   system: "SYSTEM",
 };
 
-const portraitLabels: Record<string, string> = {
-  makoto: "MAKOTO",
-  noe: "NOÉ",
+const portraits: Record<string, PortraitSpec> = {
+  makoto: {
+    key: "makoto",
+    kind: "makoto",
+    src: "makoto-hoshizawa-profile.png",
+    label: "MAKOTO",
+    alt: "星沢真（Makoto Hoshizawa）人物肖像",
+  },
+  "makoto-thought": {
+    key: "makoto-thought",
+    kind: "makoto-thought",
+    src: "makoto-inner-thought-profile.png",
+    label: "MAKOTO / INNER VOICE",
+    alt: "星沢真（Makoto Hoshizawa）的内心意象",
+  },
+  "makoto-machiavellian-king": {
+    key: "makoto-machiavellian-king",
+    kind: "makoto-thought",
+    src: "makoto-inner-persona-04.jpg",
+    label: "MAKOTO / MACHIAVELLIAN KING",
+    alt: "星沢真的内在人格：马基雅维利国王",
+  },
+  "makoto-inner-court": {
+    key: "makoto-inner-court",
+    kind: "makoto-thought",
+    src: "makoto-inner-persona-03.jpg",
+    label: "MAKOTO / INNER COURT",
+    alt: "星沢真的内在人格：康德的内在法庭",
+  },
+  "makoto-cynic-jester": {
+    key: "makoto-cynic-jester",
+    kind: "makoto-thought",
+    src: "makoto-inner-persona-02.jpg",
+    label: "MAKOTO / CYNIC JESTER",
+    alt: "星沢真的内在人格：第欧根尼与犬儒小丑",
+  },
+  "makoto-socratic-gadfly": {
+    key: "makoto-socratic-gadfly",
+    kind: "makoto-thought",
+    src: "makoto-inner-persona-01.jpg",
+    label: "MAKOTO / SOCRATIC GADFLY",
+    alt: "星沢真的内在人格：苏格拉底牛虻",
+  },
+  noe: {
+    key: "noe",
+    kind: "noe",
+    src: "noe-kurosaki-profile-v2.png",
+    label: "NOÉ",
+    alt: "黑崎诺埃（Noé Kurosaki）人物肖像",
+  },
 };
 
-const TOTAL_STORY_LINES = 151;
+portraits["makoto-persona-01"] = portraits["makoto-machiavellian-king"];
+portraits["makoto-persona-02"] = portraits["makoto-inner-court"];
+portraits["makoto-persona-03"] = portraits["makoto-cynic-jester"];
+portraits["makoto-persona-04"] = portraits["makoto-socratic-gadfly"];
+
+function portraitForLine(line?: InkLine): PortraitSpec | undefined {
+  if (!line) return undefined;
+  if (line.speaker === "makoto" && line.className === "thought") {
+    const personaPortrait = line.persona ? portraits[`makoto-${line.persona}`] : undefined;
+    return personaPortrait ?? portraits["makoto-thought"];
+  }
+  return portraits[line.speaker];
+}
+
+const TOTAL_STORY_LINES = 158;
 const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const sceneLabels: Record<string, string> = {
@@ -109,6 +179,7 @@ export default function Reader() {
         speaker: tags.SPEAKER || "narration",
         className: tags.CLASS || "narration",
         scene: tags.SCENE || scene,
+        persona: tags.PERSONA || "",
       };
       setLines((current) => [...current, nextLine]);
       setScene(nextLine.scene);
@@ -138,10 +209,11 @@ export default function Reader() {
   }, [choices, continueStory]);
 
   const progress = Math.min(100, (lines.length / TOTAL_STORY_LINES) * 100);
-  const currentSpeaker = complete ? undefined : lines[lines.length - 1]?.speaker;
+  const currentLine = complete ? undefined : lines[lines.length - 1];
+  const currentPortrait = portraitForLine(currentLine);
 
   useEffect(() => {
-    if (!currentSpeaker) return;
+    if (!currentPortrait) return;
 
     const scroller = dialogueRef.current;
     let frame = 0;
@@ -168,7 +240,7 @@ export default function Reader() {
       window.removeEventListener("scroll", requestSync);
       window.removeEventListener("resize", requestSync);
     };
-  }, [currentSpeaker, lines.length, fontSize]);
+  }, [currentPortrait, lines.length, fontSize]);
 
   const renderChoices = () => (
     <div className="ink-choices" aria-label="继续阅读">
@@ -218,24 +290,15 @@ export default function Reader() {
           <p className="scene-caption">{sceneLabels[scene]}<br />ARCHIVE VISUAL 001</p>
         </aside>
 
-        {currentSpeaker && portraitLabels[currentSpeaker] && (
-          <figure ref={portraitRef} className={`speaker-portrait-dock speaker-portrait-dock--${currentSpeaker}`} key={currentSpeaker}>
-            {currentSpeaker === "makoto" ? (
-              <img
-                src={`${assetBasePath}/assets/makoto-hoshizawa-profile.png`}
-                width="1254"
-                height="1254"
-                alt="星沢真（Makoto Hoshizawa）人物肖像"
-              />
-            ) : (
-              <img
-                src={`${assetBasePath}/assets/noe-kurosaki-profile-v2.png`}
-                width="1254"
-                height="1254"
-                alt="黑崎诺埃（Noé Kurosaki）人物肖像"
-              />
-            )}
-            <figcaption>{portraitLabels[currentSpeaker]}</figcaption>
+        {currentPortrait && (
+          <figure ref={portraitRef} className={`speaker-portrait-dock speaker-portrait-dock--${currentPortrait.kind}`} key={currentPortrait.key}>
+            <img
+              src={`${assetBasePath}/assets/${currentPortrait.src}`}
+              width="1254"
+              height="1254"
+              alt={currentPortrait.alt}
+            />
+            <figcaption>{currentPortrait.label}</figcaption>
           </figure>
         )}
 
@@ -251,6 +314,7 @@ export default function Reader() {
 
             {lines.map((line, index) => {
               const isEnvironment = line.speaker === "narration" || line.className === "environment";
+              const linePortrait = portraitForLine(line);
               const speakerLabel = line.className === "thought"
                 ? `${speakers[line.speaker] || line.speaker} · 心声`
                 : speakers[line.speaker] || line.speaker;
@@ -267,15 +331,15 @@ export default function Reader() {
                       {line.text}
                     </p>
                   </div>
-                  {index === lines.length - 1 && portraitLabels[line.speaker] && (
-                    <figure className={`speaker-portrait-inline speaker-portrait-inline--${line.speaker}`}>
+                  {index === lines.length - 1 && linePortrait && (
+                    <figure className={`speaker-portrait-inline speaker-portrait-inline--${linePortrait.kind}`}>
                       <img
-                        src={`${assetBasePath}/assets/${line.speaker === "makoto" ? "makoto-hoshizawa-profile.png" : "noe-kurosaki-profile-v2.png"}`}
+                        src={`${assetBasePath}/assets/${linePortrait.src}`}
                         width="1254"
                         height="1254"
-                        alt={`${line.speaker === "makoto" ? "星沢真（Makoto Hoshizawa）" : "黑崎诺埃（Noé Kurosaki）"}人物肖像`}
+                        alt={linePortrait.alt}
                       />
-                      <figcaption>{portraitLabels[line.speaker]}</figcaption>
+                      <figcaption>{linePortrait.label}</figcaption>
                     </figure>
                   )}
                 </article>
