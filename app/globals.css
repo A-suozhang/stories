@@ -216,7 +216,8 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
   pointer-events: none;
   animation: portrait-arrive .38s cubic-bezier(.2,.8,.2,1);
 }
-.speaker-portrait-dock img {
+.speaker-portrait-dock img,
+.speaker-portrait-inline img {
   display: block;
   width: 100%;
   aspect-ratio: 1;
@@ -224,8 +225,10 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
   border: 1px solid rgba(221,215,196,.25);
   box-shadow: 0 20px 54px rgba(0,0,0,.58), 0 0 0 8px rgba(5,6,5,.18);
 }
-.speaker-portrait-dock img { height: auto; filter: saturate(.82) contrast(1.06); }
-.speaker-portrait-dock figcaption {
+.speaker-portrait-dock img,
+.speaker-portrait-inline img { height: auto; filter: saturate(.82) contrast(1.06); }
+.speaker-portrait-dock figcaption,
+.speaker-portrait-inline figcaption {
   margin-top: 9px;
   color: rgba(221,215,196,.58);
   font: 10px "Commit Mono", ui-monospace, monospace;
@@ -233,6 +236,7 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
   text-align: center;
   text-shadow: 0 2px 8px #000;
 }
+.speaker-portrait-inline { display: none; }
 .dialogue-panel {
   background:
     linear-gradient(90deg, rgba(255,255,255,.018), transparent 16%),
@@ -444,8 +448,14 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
   .reader-layout { display: block; }
   .scene-panel { height: 38svh; position: sticky; top: 0; z-index: 1; }
   .speaker-portrait-dock {
-    right: 22px;
-    width: 150px;
+    display: none;
+  }
+  .speaker-portrait-inline {
+    display: block;
+    width: min(42vw, 150px);
+    margin: 20px 0 4px auto;
+    pointer-events: none;
+    animation: portrait-arrive .38s cubic-bezier(.2,.8,.2,1);
   }
   .scene-caption { left: 20px; bottom: 15px; }
   .dialogue-panel { position: relative; z-index: 2; border-left: 0; border-top: 1px solid var(--line); }
@@ -463,7 +473,7 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
   .character-bio--profile { display: block; }
   .character-profile { width: min(68vw, 240px); margin-bottom: 24px; }
   .ink-stream { padding-inline: 18px; }
-  .speaker-portrait-dock { right: 16px; width: 122px; }
+  .speaker-portrait-inline { width: min(40vw, 142px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

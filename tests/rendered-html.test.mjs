@@ -74,6 +74,8 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(reader, /星沢真（Makoto Hoshizawa）人物肖像/);
   assert.match(reader, /const currentSpeaker = complete \? undefined : lines\[lines\.length - 1\]\?\.speaker/);
   assert.match(reader, /speaker-portrait-dock--\$\{currentSpeaker\}/);
+  assert.match(reader, /speaker-portrait-inline--\$\{line\.speaker\}/);
+  assert.match(reader, /index === lines\.length - 1 && portraitLabels\[line\.speaker\]/);
   assert.match(reader, /currentLineRef\.current\?\.scrollIntoView\(\{ behavior: "smooth", block: "center" \}\)/);
   assert.match(reader, /const rect = line\.getBoundingClientRect\(\)/);
   assert.match(reader, /scroller\?\.addEventListener\("scroll", requestSync/);
@@ -86,6 +88,8 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(reader, /继续生活远比证明究竟是谁在生活更重要/);
   assert.match(reader, /ramen-talk-painterly-street-v5\.webp/);
   assert.match(styles, /var\(--scene-image\)/);
+  assert.match(styles, /\.speaker-portrait-dock \{[\s\S]*?display: none;/);
+  assert.match(styles, /\.speaker-portrait-inline \{[\s\S]*?display: block;/);
   assert.match(styles, /\.ink-line\.speaker-makoto \.ink-copy strong \{ color: var\(--makoto-name\); \}/);
   assert.match(styles, /\.ink-line\.speaker-noe \.ink-copy strong \{ color: var\(--noe-name\); \}/);
   assert.match(styles, /\.ink-line\.environment \.ink-copy/);

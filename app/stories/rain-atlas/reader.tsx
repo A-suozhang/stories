@@ -267,6 +267,17 @@ export default function Reader() {
                       {line.text}
                     </p>
                   </div>
+                  {index === lines.length - 1 && portraitLabels[line.speaker] && (
+                    <figure className={`speaker-portrait-inline speaker-portrait-inline--${line.speaker}`}>
+                      <img
+                        src={`${assetBasePath}/assets/${line.speaker === "makoto" ? "makoto-hoshizawa-profile.png" : "noe-kurosaki-profile-v2.png"}`}
+                        width="1254"
+                        height="1254"
+                        alt={`${line.speaker === "makoto" ? "星沢真（Makoto Hoshizawa）" : "黑崎诺埃（Noé Kurosaki）"}人物肖像`}
+                      />
+                      <figcaption>{portraitLabels[line.speaker]}</figcaption>
+                    </figure>
+                  )}
                 </article>
               );
             })}
