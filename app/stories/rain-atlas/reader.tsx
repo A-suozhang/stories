@@ -26,7 +26,7 @@ const portraitLabels: Record<string, string> = {
   noe: "NOÉ",
 };
 
-const TOTAL_STORY_LINES = 107;
+const TOTAL_STORY_LINES = 151;
 const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const sceneLabels: Record<string, string> = {

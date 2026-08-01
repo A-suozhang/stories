@@ -51,13 +51,13 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.doesNotMatch(ink, /#SPEAKER: (?!makoto|noe|narration|system)/);
   assert.match(ink, /高架桥的阴影压在一排自动售货机和公共拉面摊上/);
   assert.match(ink, /你的维护层接受了拉面摊的卫生证书/);
-  assert.match(ink, /共情大概是理性里最昂贵的中断程序/);
-  assert.match(ink, /摊主关掉一盏空座上方的灯/);
+  assert.match(ink, /所谓persona，大概不是一张假脸/);
+  assert.match(ink, /HISTORICAL FAULTS: NONE/);
   assert.doesNotMatch(ink, /#PORTRAIT:/);
   assert.match(ink, /#SCENE: diagnostic/);
   assert.match(ink, /#SCENE: reconnect/);
-  assert.match(ink, /=== beat_106 ===[\s\S]*?\* \[继续 ▸\] -> beat_107/);
-  assert.match(ink, /=== beat_107 ===[\s\S]*?\* \[结束对话 ■\] -> ending/);
+  assert.match(ink, /=== beat_150 ===[\s\S]*?\* \[继续 ▸\] -> beat_151/);
+  assert.match(ink, /=== beat_151 ===[\s\S]*?\* \[结束对话 ■\] -> ending/);
   assert.match(reader, /lines\.map\(\(line, index\)/);
   assert.match(reader, /const isEnvironment = line\.speaker === "narration" \|\| line\.className === "environment"/);
   assert.match(reader, /const speakerLabel = line\.className === "thought"/);
@@ -67,7 +67,7 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(reader, /speaker-\$\{line\.speaker\}/);
   assert.match(reader, /index === lines\.length - 1 \? "current" : "past"/);
   assert.match(reader, /useState\(21\)/);
-  assert.match(reader, /const TOTAL_STORY_LINES = 107/);
+  assert.match(reader, /const TOTAL_STORY_LINES = 151/);
   assert.doesNotMatch(reader, /ink-portrait|tags\.PORTRAIT/);
   assert.match(reader, /星沢真｜Makoto Hoshizawa/);
   assert.match(reader, /makoto-hoshizawa-profile\.png/);
