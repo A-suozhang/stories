@@ -40,7 +40,7 @@ test("compiles the current Markdown into the complete progressive Ink story", as
 });
 
 test("serves the authoring tool only on the loopback server", async (context) => {
-  const server = createStoryStudioServer({ apiKey: "", model: "test-model" });
+  const server = createStoryStudioServer({ provider: "openai", apiKey: "", model: "test-model" });
   server.listen(0, STUDIO_HOST);
   await once(server, "listening");
   context.after(() => server.close());
@@ -71,4 +71,57 @@ test("serves the authoring tool only on the loopback server", async (context) =>
     body: JSON.stringify({}),
   });
   assert.equal(aiResponse.status, 503);
+});
+
+test("routes Act generation through the configured local Codex provider", async (context) => {
+  let request;
+  let formatRequest;
+  const server = createStoryStudioServer({
+    provider: "codex",
+    model: "test-codex-model",
+    draftRequester: async (value) => {
+      request = value;
+      return {
+        id: value.act.id,
+        title: "候选 Act",
+        summary: "由本地 Codex 返回的候选大意。",
+        scenes: [{ key: "candidate-scene", title: "候选场景", script: "**Makoto：** 测试。" }],
+      };
+    },
+    sceneFormatter: async (value) => {
+      formatRequest = value;
+      return "*雨声贴着棚布落下。*\n\n**Makoto：** 测试。";
+    },
+  });
+  server.listen(0, STUDIO_HOST);
+  await once(server, "listening");
+  context.after(() => server.close());
+  const { port } = server.address();
+  const base = `http://${STUDIO_HOST}:${port}`;
+  const status = await fetch(`${base}/api/status`).then((response) => response.json());
+  assert.equal(status.aiConfigured, true);
+  assert.equal(status.provider, "codex");
+
+  const document = parseStoryDocument(await readFile(sourceUrl, "utf8"));
+  const response = await fetch(`${base}/api/act-draft`, {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-story-studio": "1" },
+    body: JSON.stringify({ document, act: document.acts[0], mode: "generate", instruction: "保持克制。" }),
+  });
+  const payload = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(payload.provider, "codex");
+  assert.equal(payload.act.title, "候选 Act");
+  assert.equal(request.model, "test-codex-model");
+  assert.equal(request.instruction, "保持克制。");
+
+  const formatResponse = await fetch(`${base}/api/format-scene`, {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-story-studio": "1" },
+    body: JSON.stringify({ actTitle: "替换与连续性", sceneTitle: "雨夜", script: "雨很大。Makoto说测试。" }),
+  });
+  const formatPayload = await formatResponse.json();
+  assert.equal(formatResponse.status, 200);
+  assert.match(formatPayload.script, /\*雨声贴着棚布落下。\*/);
+  assert.equal(formatRequest.sceneTitle, "雨夜");
 });

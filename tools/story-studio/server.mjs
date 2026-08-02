@@ -1,7 +1,8 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { createHash } from "node:crypto";
 import { createServer } from "node:http";
-import { readFile, rename, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, rename, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -106,7 +107,82 @@ function createActPrompt({ document, act, mode, instruction }) {
   ].join("\n");
 }
 
-async function requestActDraft({ apiKey, model, document, act, mode, instruction }) {
+function createSceneFormatPrompt({ actTitle, sceneTitle, script }) {
+  return [
+    "你是这个本地短篇小说工作台的 Markdown 场景格式化器。",
+    "请把作者提供的一段散文、对白草稿或混合文本，整理成可直接放入本项目 Scene 脚本框的格式。",
+    "必须保留原文的事实、顺序、人物关系、语气和信息，不续写、不删减剧情，不添加解释。",
+    "严格遵守以下固定格式：",
+    "1. 客观环境、动作、表情和声音写成单独一段，并用单个 *...* 包裹。",
+    "2. 人物对白每句单独一行，使用 **Makoto：**、**Noé：** 或原文明确给出的角色名。",
+    "3. Makoto 的内心使用 **Makoto（心声）：**；若原文明确指向某种人格，必须把中文人格名映射成括号后的固定 ID，而不是只保留中文称呼。映射如下：",
+    "   - 马基雅维利国王 / 国王 / 王座 / 狮子与狐狸 → **Makoto（心声｜machiavellian-king）：**；语气计算资源、权力、背叛风险与生存控制，把共情当作情报而非命令。",
+    "   - 康德的内在法庭 / 内在法庭 / 法庭 / 法官 / 罪证 → **Makoto（心声｜inner-court）：**；语气进行道德审判、追问动机和责任，不允许借理由自我豁免。",
+    "   - 第欧根尼与犬儒小丑 / 犬儒小丑 / 小丑 / 提灯与犬 → **Makoto（心声｜cynic-jester）：**；语气用讥讽、玩笑拆穿权威和严肃性，把真话伪装成笑话。",
+    "   - 苏格拉底牛虻 / 牛虻 / 追问者 / 毒芹与辩证环 → **Makoto（心声｜socratic-gadfly）：**；语气连续提问、定义概念、揭示矛盾，不接受未经检验的答案。",
+    "   这些人格不是四个新人物，而是 Makoto 的四种内在声音；如果原文没有人格线索，则使用不带 ID 的 **Makoto（心声）：**，不要擅自分配人格。",
+    "4. 系统、终端或诊断内容放入 ```text 代码块。",
+    "5. 段落之间空一行；只返回整理后的 Markdown，不要返回标题、序号、说明文字或代码围栏（系统代码块除外）。",
+    "",
+    `当前 Act：${actTitle || "未命名 Act"}`,
+    `当前 Scene：${sceneTitle || "未命名场景"}`,
+    "",
+    "作者原始文本：",
+    script,
+  ].join("\n");
+}
+
+function cleanFormattedScene(text) {
+  return String(text)
+    .replace(/^```(?:markdown|md|text)?\s*/iu, "")
+    .replace(/\s*```$/u, "")
+    .trim();
+}
+
+async function requestCodexSceneFormat({ codexPath, model, actTitle, sceneTitle, script, timeoutMs }) {
+  const temporaryDirectory = await mkdtemp(join(tmpdir(), "story-studio-format-"));
+  const outputPath = join(temporaryDirectory, "formatted-scene.md");
+  const args = [
+    "exec",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--sandbox", "read-only",
+    "--skip-git-repo-check",
+    "--color", "never",
+    "--cd", temporaryDirectory,
+    "--model", model,
+    "--output-last-message", outputPath,
+    "-",
+  ];
+  try {
+    await runCodex({ codexPath, args, input: createSceneFormatPrompt({ actTitle, sceneTitle, script }), timeoutMs });
+    return cleanFormattedScene(await readFile(outputPath, "utf8"));
+  } finally {
+    await rm(temporaryDirectory, { recursive: true, force: true });
+  }
+}
+
+async function requestOpenAiSceneFormat({ apiKey, model, actTitle, sceneTitle, script }) {
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: { authorization: `Bearer ${apiKey}`, "content-type": "application/json" },
+    body: JSON.stringify({
+      model,
+      store: false,
+      instructions: "只输出整理后的 Markdown 场景脚本，不要解释。",
+      input: createSceneFormatPrompt({ actTitle, sceneTitle, script }),
+      reasoning: { effort: "low" },
+      text: { verbosity: "high" },
+      max_output_tokens: 8000,
+    }),
+    signal: AbortSignal.timeout(180000),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error?.message ?? `OpenAI 请求失败（${response.status}）`);
+  return cleanFormattedScene(extractResponseText(payload));
+}
+
+async function requestOpenAiActDraft({ apiKey, model, document, act, mode, instruction }) {
   const response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
@@ -130,6 +206,82 @@ async function requestActDraft({ apiKey, model, document, act, mode, instruction
   return normalizeGeneratedAct(parsed, act.id);
 }
 
+function runCodex({ codexPath, args, input, timeoutMs }) {
+  return new Promise((resolve, reject) => {
+    const codexEnvironment = { ...process.env };
+    if (process.env.STORY_STUDIO_CODEX_PROXY !== "inherit") {
+      for (const key of ["ALL_PROXY", "HTTPS_PROXY", "HTTP_PROXY", "all_proxy", "https_proxy", "http_proxy", "CODEX_THREAD_ID", "CODEX_CI", "CODEX_PERMISSION_PROFILE"]) {
+        delete codexEnvironment[key];
+      }
+    }
+    const child = spawn(codexPath, args, {
+      env: codexEnvironment,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+    let stdout = "";
+    let stderr = "";
+    let settled = false;
+    const finish = (callback) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      callback();
+    };
+    const timer = setTimeout(() => {
+      child.kill("SIGTERM");
+      finish(() => reject(new Error(`本地 Codex 生成超时（${Math.round(timeoutMs / 1000)} 秒）`)));
+    }, timeoutMs);
+
+    child.stdout.setEncoding("utf8");
+    child.stderr.setEncoding("utf8");
+    child.stdout.on("data", (chunk) => { stdout = `${stdout}${chunk}`.slice(-1024 * 1024); });
+    child.stderr.on("data", (chunk) => { stderr = `${stderr}${chunk}`.slice(-1024 * 1024); });
+    child.on("error", (error) => finish(() => reject(new Error(
+      error.code === "ENOENT"
+        ? `找不到本地 Codex：${codexPath}；请设置 STORY_STUDIO_CODEX_PATH。`
+        : `无法启动本地 Codex：${error.message}`,
+    ))));
+    child.on("close", (code, signal) => finish(() => {
+      if (code === 0) return resolve({ stdout, stderr });
+      const detail = stderr.trim() || stdout.trim() || `signal ${signal ?? "unknown"}`;
+      reject(new Error(`本地 Codex 生成失败（exit ${code ?? "unknown"}）：${detail.slice(-2000)}`));
+    }));
+    child.stdin.on("error", () => {});
+    child.stdin.end(input);
+  });
+}
+
+async function requestCodexActDraft({ codexPath, schemaPath, model, document, act, mode, instruction, timeoutMs }) {
+  const temporaryDirectory = await mkdtemp(join(tmpdir(), "story-studio-codex-"));
+  const outputPath = join(temporaryDirectory, "act-draft.json");
+  const prompt = [
+    "你是严谨的中文短篇小说编辑。维护既有设定，优先具体动作与克制对话，不擅自改变人物背景。",
+    "不要调用工具，不要修改任何文件。严格按照输出 JSON Schema 返回候选稿。",
+    "",
+    createActPrompt({ document, act, mode, instruction }),
+  ].join("\n");
+  const args = [
+    "exec",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--sandbox", "read-only",
+    "--skip-git-repo-check",
+    "--color", "never",
+    "--cd", temporaryDirectory,
+    "--model", model,
+    "--output-schema", schemaPath,
+    "--output-last-message", outputPath,
+    "-",
+  ];
+  try {
+    await runCodex({ codexPath, args, input: prompt, timeoutMs });
+    const parsed = parseModelJson(await readFile(outputPath, "utf8"));
+    return normalizeGeneratedAct(parsed, act.id);
+  } finally {
+    await rm(temporaryDirectory, { recursive: true, force: true });
+  }
+}
+
 export function createStoryStudioServer(options = {}) {
   const repoRoot = resolve(options.repoRoot ?? defaultRepoRoot);
   const storyMarkdown = resolve(options.storyMarkdown ?? join(repoRoot, "content/stories/rain-atlas/story.md"));
@@ -138,7 +290,21 @@ export function createStoryStudioServer(options = {}) {
   const compiler = resolve(options.compiler ?? join(repoRoot, "node_modules/inkjs/bin/inkjs-compiler.js"));
   const publicDirectory = resolve(options.publicDirectory ?? join(moduleDirectory, "public"));
   const apiKey = options.apiKey ?? process.env.OPENAI_API_KEY ?? "";
+  const provider = options.provider ?? process.env.STORY_STUDIO_AI_PROVIDER ?? (apiKey ? "openai" : "codex");
   const model = options.model ?? process.env.STORY_STUDIO_MODEL ?? "gpt-5.6-terra";
+  const codexPath = options.codexPath ?? process.env.STORY_STUDIO_CODEX_PATH ?? "codex";
+  const codexSchema = resolve(options.codexSchema ?? join(moduleDirectory, "act-draft.schema.json"));
+  // A full Act request includes the complete story context and must pass
+  // through the local Codex CLI startup/authentication path. Twelve seconds
+  // is shorter than the normal cold-start latency, so it caused valid
+  // generations to be aborted before Codex could return its JSON output.
+  // Keep the timeout configurable, but give local generation a practical
+  // two-minute default.
+  const codexTimeoutMs = options.codexTimeoutMs ?? (Number.parseInt(process.env.STORY_STUDIO_AI_TIMEOUT_MS ?? "", 10) || 120000);
+  if (!new Set(["codex", "openai"]).has(provider)) throw new Error(`未知 Story Studio AI provider：${provider}`);
+  const aiConfigured = provider === "codex" || Boolean(apiKey);
+  const draftRequester = options.draftRequester ?? (provider === "codex" ? requestCodexActDraft : requestOpenAiActDraft);
+  const sceneFormatter = options.sceneFormatter ?? (provider === "codex" ? requestCodexSceneFormat : requestOpenAiSceneFormat);
 
   const compileAndWrite = async (document) => {
     const { ink, beatCount } = compileStoryToInk(document);
@@ -153,7 +319,7 @@ export function createStoryStudioServer(options = {}) {
     try {
       const url = new URL(request.url ?? "/", `http://${request.headers.host ?? STUDIO_HOST}`);
       if (request.method === "GET" && url.pathname === "/api/status") {
-        return json(response, 200, { localOnly: true, host: STUDIO_HOST, aiConfigured: Boolean(apiKey), model, storyPath: "content/stories/rain-atlas/story.md" });
+        return json(response, 200, { localOnly: true, host: STUDIO_HOST, aiConfigured, provider, model, storyPath: "content/stories/rain-atlas/story.md" });
       }
       if (request.method === "GET" && url.pathname === "/api/document") {
         const markdown = await readFile(storyMarkdown, "utf8");
@@ -185,13 +351,41 @@ export function createStoryStudioServer(options = {}) {
       }
       if (request.method === "POST" && url.pathname === "/api/act-draft") {
         assertLocalMutation(request);
-        if (!apiKey) return json(response, 503, { error: "未设置 OPENAI_API_KEY；手工编辑仍可正常使用。" });
+        if (!aiConfigured) return json(response, 503, { error: "OpenAI provider 未设置 OPENAI_API_KEY；手工编辑仍可正常使用。" });
         const body = await readJsonBody(request);
         const document = validateStoryDocument(body.document);
         const act = body.act;
         if (!act || typeof act !== "object") throw Object.assign(new Error("缺少目标 Act"), { statusCode: 400 });
-        const draft = await requestActDraft({ apiKey, model, document, act, mode: body.mode, instruction: String(body.instruction ?? "").slice(0, 4000) });
-        return json(response, 200, { act: draft, model });
+        const draft = await draftRequester({
+          apiKey,
+          codexPath,
+          schemaPath: codexSchema,
+          model,
+          document,
+          act,
+          mode: body.mode,
+          instruction: String(body.instruction ?? "").slice(0, 4000),
+          timeoutMs: codexTimeoutMs,
+        });
+        return json(response, 200, { act: draft, provider, model });
+      }
+      if (request.method === "POST" && url.pathname === "/api/format-scene") {
+        assertLocalMutation(request);
+        if (!aiConfigured) return json(response, 503, { error: "AI provider 未配置；手工编辑仍可正常使用。" });
+        const body = await readJsonBody(request);
+        const script = String(body.script ?? "").trim();
+        if (!script) throw Object.assign(new Error("请先在场景脚本框中输入内容。"), { statusCode: 400 });
+        const formatted = await sceneFormatter({
+          apiKey,
+          codexPath,
+          model,
+          actTitle: String(body.actTitle ?? ""),
+          sceneTitle: String(body.sceneTitle ?? ""),
+          script,
+          timeoutMs: codexTimeoutMs,
+        });
+        if (!formatted) throw new Error("Codex 没有返回格式化后的脚本。");
+        return json(response, 200, { script: formatted, provider, model });
       }
 
       if (request.method !== "GET") return json(response, 404, { error: "Not found" });
@@ -225,6 +419,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   server.listen(port, STUDIO_HOST, () => {
     console.log(`Story Studio: http://${STUDIO_HOST}:${port}`);
     console.log("Local only — this server is not part of the public Next.js build.");
-    if (!process.env.OPENAI_API_KEY) console.log("AI drafting disabled: set OPENAI_API_KEY to enable it.");
+    const provider = process.env.STORY_STUDIO_AI_PROVIDER ?? (process.env.OPENAI_API_KEY ? "openai" : "codex");
+    console.log(`AI drafting: ${provider} · ${process.env.STORY_STUDIO_MODEL ?? "gpt-5.6-terra"}`);
   });
 }

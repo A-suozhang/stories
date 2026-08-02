@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": { "type": "string" },
+          "title": { "type": "string" },
+          "script": { "type": "string" }
+        },
+        "required": ["key", "title", "script"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["id", "title", "summary", "scenes"],
+  "additionalProperties": false
+}

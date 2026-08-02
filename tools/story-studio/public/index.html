@@ -3,19 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
     <title>Story Studio · Local</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="world-layer" aria-hidden="true"><i></i><i></i><i></i></div>
     <div id="app" class="app-shell" aria-busy="true">
       <aside id="sidebar" class="sidebar"></aside>
       <main id="workspace" class="workspace">
         <div class="loading-state">正在读取本地故事文件…</div>
       </main>
+      <aside id="ai-panel" class="ai-dock" aria-label="AI 写作面板"></aside>
     </div>
-    <div id="ai-layer" class="modal-layer" hidden></div>
     <div id="toast" class="toast" hidden></div>
     <script type="module" src="/app.js"></script>
   </body>

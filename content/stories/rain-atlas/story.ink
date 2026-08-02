@@ -220,447 +220,519 @@ Makoto把一片叉烧从汤里翻过来，切口朝下，动作像是在给某�
 * [继续 ▸] -> beat_054
 
 === beat_054 ===
-你每次快轮到自己，就拿个笑话垫在门口。 #SPEAKER: noe #CLASS: character #SCENE: defense
+镜片上的窗口全部关闭。摊主正好收走Makoto的空碗，没有在他面前多停一秒。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_055
 
 === beat_055 ===
-门垫总比破门费便宜。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+你进了我的维护层。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_056
 
 === beat_056 ===
-门根本没锁。你只是想让人以为进去过。 #SPEAKER: noe #CLASS: character #SCENE: defense
+你的维护层接受了拉面摊的卫生证书。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_057
 
 === beat_057 ===
-Makoto用舌尖把细棍换到另一边。镜片上映出的笑意比脸上更明显。 #SPEAKER: narration #CLASS: environment #SCENE: defense
+动了什么？ #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_058
 
 === beat_058 ===
-面把你泡开窍了？ #SPEAKER: makoto #CLASS: character #SCENE: defense
+情感桥。战斗模式退了，它没跟着回来。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_059
 
 === beat_059 ===
-看，又把我推回桌子中央。 #SPEAKER: noe #CLASS: character #SCENE: defense
+留后门了？ #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_060
 
 === beat_060 ===
-总不能让谈话塌一边。继续。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+你要是介意，下次我看着你坏。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_061
 
 === beat_061 ===
-你先把忠诚叫宣传，把信任叫漏洞，把在乎叫维护成本。以后东西坏了，你就能说早知道。 #SPEAKER: noe #CLASS: character #SCENE: defense
+下次先说。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_062
 
 === beat_062 ===
-留冗余。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+下次把保修费交了。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_063
 
 === beat_063 ===
-给失败抢名字。 #SPEAKER: noe #CLASS: character #SCENE: defense
+Noé转头看了一眼摊主，又低头看向已经没有热气的拉面。Makoto仍看着自己的碗，细棍被咬出一道浅痕。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_064
 
 === beat_064 ===
-名字先到，至少不收停尸费。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+老板，再下一碗。少葱。扣子谢了。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_065
 
 === beat_065 ===
-你先拿自己开枪，别人就打不中了。 #SPEAKER: noe #CLASS: character #SCENE: defense
+摊主关掉水龙头，应了一声。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_066
 
 === beat_066 ===
-省得他们手抖。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+这碗一口没动。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_067
 
 === beat_067 ===
-所以你不怕别人看错你。你怕人看准。 #SPEAKER: noe #CLASS: character #SCENE: defense
+坨了。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_068
 
 === beat_068 ===
-Makoto从鼻腔里短促地笑了一声，筷子仍在碗中寻找下一口面。 #SPEAKER: narration #CLASS: environment #SCENE: defense
+刚才这不影响结论。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_069
 
 === beat_069 ===
-像酒馆墙上的句子。擦干净还能看。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+结论又不用嚼。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_070
 
 === beat_070 ===
-听懂了就行。 #SPEAKER: noe #CLASS: character #SCENE: defense
+Makoto没有回答。镜片右上角的诊断状态保持绿色。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_071
 
 === beat_071 ===
-还有？ #SPEAKER: makoto #CLASS: character #SCENE: defense
+正常了。他没有撤回任何结论，只是把老板从“提供拉面的功能”恢复成了一个认识的人。重复的交易原来也会长出交易之外的东西。所谓persona，大概不是一张假脸，而是个人和社会签下的停火协议：我按你认得出的样子出现，你替我挡住穿帮的地方。戴得久了，脸会长成面具的形状，面具也会沾上脸的体温。过去人类把这叫会做人；现在厂家把它封装成情感桥，保修十二个月——不包括泡坨的面。 #SPEAKER: makoto #CLASS: thought #SCENE: closing
 * [继续 ▸] -> beat_072
 
 === beat_072 ===
-你让我负责把日子过下去，你负责证明日子不值得过。分工一直挺稳。 #SPEAKER: noe #CLASS: character #SCENE: defense
+Noé把旧碗推到桌角，筷子仍横放在原处。新面落进沸水，计时器亮起九十秒。摊主重新切葱，刀锋落在案板上的声音短而整齐。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_073
 
 === beat_073 ===
-现在也没塌。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+这次趁热。再聊坨了，算你自己的模块损耗。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_074
 
 === beat_074 ===
-因为以前我会到这里停。 #SPEAKER: noe #CLASS: character #SCENE: defense
+你也该扫一下自己的。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_075
 
 === beat_075 ===
-那就停。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+我刚修好你，你先学会感恩。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_076
 
 === beat_076 ===
-为什么？ #SPEAKER: noe #CLASS: character #SCENE: defense
+不是情感桥。人格模块。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_077
 
 === beat_077 ===
-面要凉。 #SPEAKER: makoto #CLASS: character #SCENE: defense
+诊断依据？ #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_078
 
 === beat_078 ===
-Makoto夹住一根已经断开的面，把它在碗沿上又折短了一次。细棍仍稳稳停在嘴角。 #SPEAKER: narration #CLASS: environment #SCENE: defense
+也许从……you know when，就一直没恢复。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_079
 
 === beat_079 ===
-那是结果，不是理由。你在等我替你停。 #SPEAKER: noe #CLASS: character #SCENE: pressure
+Makoto从筷子纸套上重新叼起那根细棍。动作不快，也没有停顿。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_080
 
 === beat_080 ===
-Makoto端起碗喝了一口汤。放回桌面时，碗底正好落回原先那圈水渍里。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
+不然很难解释你怎么能当这么多年——such a giant asshole。 #SPEAKER: noe #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_081
 
 === beat_081 ===
-先吃面。老板把你上周掉的扣子收了一周。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
+吃你的面。 #SPEAKER: makoto #CLASS: character #SCENE: closing
 * [继续 ▸] -> beat_082
 
 === beat_082 ===
-Noé低头看了一眼自己的碗。面条已经吸饱汤水，挤在一起。摊主仍背对着他们，手里的滤网却已经冲洗了太久。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
+新碗被推到Noé面前。Noé掰开筷子，先夹起一小撮面。Makoto看着自己的汤底，镜片上没有任何可见变化。最内层却静默展开了一次本机深度诊断，检索范围越过现用人格配置，沿着封存履历一直回溯到那段没有名称、只有权限等级的战争记录。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_083
 
 === beat_083 ===
-少一颗不影响闭合。 #SPEAKER: noe #CLASS: character #SCENE: pressure
+> selfdiag persona_stack --deep #SPEAKER: system #CLASS: system #SCENE: closing
 * [继续 ▸] -> beat_084
 
 === beat_084 ===
-他记得你少葱，也记得你的东西。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
+> audit affect_history --from [CLASSIFIED] #SPEAKER: system #CLASS: system #SCENE: closing
 * [继续 ▸] -> beat_085
 
 === beat_085 ===
-一个熟客能提供的现金流，当然比脑子里那几比特存储值钱。 #SPEAKER: noe #CLASS: character #SCENE: pressure
+PERSONA CORE: NORMAL #SPEAKER: system #CLASS: system #SCENE: closing
 * [继续 ▸] -> beat_086
 
 === beat_086 ===
-OK。那今晚你要扮演冷血杀手。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
+EMPATHY MODULE: NORMAL #SPEAKER: system #CLASS: system #SCENE: closing
 * [继续 ▸] -> beat_087
 
 === beat_087 ===
-Noé没有接话。他把碗转了半圈，筷子仍横在桌上。风衣下摆的雨水沿椅脚落进排水槽。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
+INTERPERSONAL AFFECT BRIDGE: NORMAL #SPEAKER: system #CLASS: system #SCENE: closing
 * [继续 ▸] -> beat_088
 
 === beat_088 ===
-Makoto从鼻腔里笑了一声，继续吃面。摊主回头看见Noé没动的碗，手伸向碗沿，又停住。Makoto用筷尾在桌面轻敲两下，朝汤锅偏了偏下巴。摊主会意，从锅底舀起半勺滚汤。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
+HISTORICAL FAULTS: NONE #SPEAKER: system #CLASS: system #SCENE: closing
 * [继续 ▸] -> beat_089
 
 === beat_089 ===
-Makoto夹住坨成一团的面，稍稍提起。热汤从面条间隙灌下去，白汽重新升起。摊主落勺，顺手把那片多送的叉烧压到最上面；Makoto松开筷子，将碗沿原来的水印推回Noé面前。两个人一句话也没有说。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
+Makoto关闭窗口，端起碗喝完最后一口汤。高架桥外的广告屏再次刷新同一张笑脸。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_090
 
 === beat_090 ===
-再试一次。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
+当天夜里，那间拉面摊出现在一座没有出口的黑色大厅里。雨停在塑料棚外，列车悬在高架桥上。国王、法庭、小丑与牛虻围着同一碗已经冷透的面，没有人坐在主位。每个人面前都亮着同一行绿色诊断：EMPATHY MODULE: NORMAL。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_091
 
 === beat_091 ===
-温度恢复了。面筋断裂不可逆。 #SPEAKER: noe #CLASS: character #SCENE: pressure
+法官，把起诉书收起来。模块正常，是因为信号确实抵达了；是否服从信号，属于王座，不属于电路。把痛苦当成情报而不是命令，这叫主权。 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: closing
 * [继续 ▸] -> beat_092
 
 === beat_092 ===
-Makoto把自己碗里的最后一小束面送入口中，拇指顺手抹掉碗沿的一点油。他把空碗向摊主的方向推了半寸，碗口正好避开桌面的接缝。摊主收走时，Makoto仍看着Noé。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
+你把怯懦改名为主权，就以为获得了豁免。Noé无从选择；你有选择，却命令信号沉默。法庭审理的正是这部分差别。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
 * [继续 ▸] -> beat_093
 
 === beat_093 ===
-你刚才的战斗模式关了？ #SPEAKER: makoto #CLASS: character #SCENE: pressure
+判得漂亮。建议刻在墙上，让被告每晚撞一次。反正法官从不支付维修费。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
 * [继续 ▸] -> beat_094
 
 === beat_094 ===
-十三分钟前。 #SPEAKER: noe #CLASS: character #SCENE: pressure
+而你把每一次供词改成笑话，因为笑声结束以后，你就不必为真话签名。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
 * [继续 ▸] -> beat_095
 
 === beat_095 ===
-我猜少关了一层。情感桥没回来。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
+至少我承认自己在改名。国王把“害怕失去Noé”印成“关键人员风险”，还要盖一枚皇家钢印。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
 * [继续 ▸] -> beat_096
 
 === beat_096 ===
-依据？ #SPEAKER: noe #CLASS: character #SCENE: pressure
+我的词让他活着。你的笑话和法官的鞭子，只让他更擅长藏起来。 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: closing
 * [继续 ▸] -> beat_097
 
 === beat_097 ===
-他在救你的面。你在算他的现金流。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
+有趣。国王说共情是信号，法庭说共情是义务，小丑说共情是被改名的供词。可你们都把“正常”当作前提。如果结果与故障中的Noé相同，什么可观察的事实能够区分拒绝与缺失？ #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: closing
 * [继续 ▸] -> beat_098
 
 === beat_098 ===
-也可能我只是终于算明白了。 #SPEAKER: noe #CLASS: character #SCENE: pressure
+账单。坏掉的人送修，正常的人挨骂。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
 * [继续 ▸] -> beat_099
 
 === beat_099 ===
-这就是理由。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
+区别是责任。能力存在，便不能再用缺陷替结果辩护。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
 * [继续 ▸] -> beat_100
 
 === beat_100 ===
-Makoto没有回答。他把筷子平放在纸套上，镜片同时暗了一层，把摊位灯光压成灰白色。数个半透明窗口在镜面深处展开，Noé的义体轮廓被拆成骨骼、动力、神经和人格接口四层。 #SPEAKER: narration #CLASS: environment #SCENE: diagnostic
+那么，NORMAL不是健康证明，而是管辖权声明：它只证明这里有人可以被追责。可当一种拒绝持续得足够久，它在什么时候不再是选择，变成故障；又在什么时候不再是故障，被叫作一个人？ #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: closing
 * [继续 ▸] -> beat_101
 
 === beat_101 ===
-摊位上方的市政卫生信标每五秒广播一次检查凭证。Makoto的镜片截下一枚，把用途字段从“食品安全”改写成“义体维护”。凭证先闪红，随后变成绿色。Noé胸腔内部原本拒绝外部访问的端口逐层开放。 #SPEAKER: narration #CLASS: environment #SCENE: diagnostic
+国王用指节叩响桌面，法庭起身反驳，小丑为双方鼓掌，牛虻等待他们再次偷换定义。没有第五张椅子，也没有一个置身事外的Makoto负责裁决；每一种辩护、指控、笑话和问题都声称自己就是他。争论声中，Makoto醒了。天还没有亮，隔墙传来Noé睡眠模拟器低而规律的运转声。镜片里的诊断结果仍然是绿色；第一次，那颜色不像健康，更像一份无法转交给故障的责任。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_102
 
 === beat_102 ===
-EMPATHY MODULE: HARDWARE ONLINE #SPEAKER: system #CLASS: system #SCENE: diagnostic
+你每次快轮到自己，就拿个笑话垫在门口。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_103
 
 === beat_103 ===
-INTERPERSONAL AFFECT BRIDGE: DEADLOCKED #SPEAKER: system #CLASS: system #SCENE: diagnostic
+门垫总比破门费便宜。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_104
 
 === beat_104 ===
-SOCIAL SUBTEXT RESPONSE: NONE #SPEAKER: system #CLASS: system #SCENE: diagnostic
+门根本没锁。你只是想让人以为进去过。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_105
 
 === beat_105 ===
-SELF-AFFECT CHANNEL: NORMAL #SPEAKER: system #CLASS: system #SCENE: diagnostic
+Makoto用舌尖把细棍换到另一边。镜片上映出的笑意比脸上更明显。 #SPEAKER: narration #CLASS: environment #SCENE: defense
 * [继续 ▸] -> beat_106
 
 === beat_106 ===
-COGNITIVE FALLBACK: ENABLED #SPEAKER: system #CLASS: system #SCENE: diagnostic
+面把你泡开窍了？ #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_107
 
 === beat_107 ===
-AUTO-RECOVERY: FAILED #SPEAKER: system #CLASS: system #SCENE: diagnostic
+看，又把我推回桌子中央。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_108
 
 === beat_108 ===
-CAUSE: COMBAT AFFECT-SUPPRESSION SESSION NOT RELEASED #SPEAKER: system #CLASS: system #SCENE: diagnostic
+总不能让谈话塌一边。继续。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_109
 
 === beat_109 ===
-TRIGGER: HOSTILE CYBERWARE EVENT / 00:14:32 AGO #SPEAKER: system #CLASS: system #SCENE: diagnostic
+你先把忠诚叫宣传，把信任叫漏洞，把在乎叫维护成本。以后东西坏了，你就能说早知道。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_110
 
 === beat_110 ===
-Makoto咬住嘴角的细棍，外层镜页微微偏转。镜片右侧出现一行命令。他的右手仍搭在桌沿，左手没有抬起。 #SPEAKER: narration #CLASS: environment #SCENE: reconnect
+留冗余。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_111
 
 === beat_111 ===
-> revoke affect_session #SPEAKER: system #CLASS: system #SCENE: reconnect
+给失败抢名字。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_112
 
 === beat_112 ===
-> terminate affect_bridge #SPEAKER: system #CLASS: system #SCENE: reconnect
+名字先到，至少不收停尸费。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_113
 
 === beat_113 ===
-> reload personal_profile #SPEAKER: system #CLASS: system #SCENE: reconnect
+你先拿自己开枪，别人就打不中了。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_114
 
 === beat_114 ===
-> reconnect #SPEAKER: system #CLASS: system #SCENE: reconnect
+省得他们手抖。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_115
 
 === beat_115 ===
-INTERPERSONAL AFFECT BRIDGE: ONLINE #SPEAKER: system #CLASS: system #SCENE: reconnect
+所以你不怕别人看错你。你怕人看准。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_116
 
 === beat_116 ===
-Noé的视线短暂失焦。胸腔板缝里的琥珀色依次熄灭，又从锁骨向下重新亮起。筷尖从葱花上滑开，碰到碗壁，发出一声轻响。 #SPEAKER: narration #CLASS: environment #SCENE: reconnect
+Makoto从鼻腔里短促地笑了一声，筷子仍在碗中寻找下一口面。 #SPEAKER: narration #CLASS: environment #SCENE: defense
 * [继续 ▸] -> beat_117
 
 === beat_117 ===
-镜片上的窗口全部关闭。摊主正好收走Makoto的空碗，没有在他面前多停一秒。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+像酒馆墙上的句子。擦干净还能看。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_118
 
 === beat_118 ===
-你进了我的维护层。 #SPEAKER: noe #CLASS: character #SCENE: closing
+听懂了就行。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_119
 
 === beat_119 ===
-你的维护层接受了拉面摊的卫生证书。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+还有？ #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_120
 
 === beat_120 ===
-动了什么？ #SPEAKER: noe #CLASS: character #SCENE: closing
+你让我负责把日子过下去，你负责证明日子不值得过。分工一直挺稳。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_121
 
 === beat_121 ===
-情感桥。战斗模式退了，它没跟着回来。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+现在也没塌。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_122
 
 === beat_122 ===
-留后门了？ #SPEAKER: noe #CLASS: character #SCENE: closing
+因为以前我会到这里停。 #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_123
 
 === beat_123 ===
-你要是介意，下次我看着你坏。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+那就停。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_124
 
 === beat_124 ===
-下次先说。 #SPEAKER: noe #CLASS: character #SCENE: closing
+为什么？ #SPEAKER: noe #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_125
 
 === beat_125 ===
-下次把保修费交了。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+面要凉。 #SPEAKER: makoto #CLASS: character #SCENE: defense
 * [继续 ▸] -> beat_126
 
 === beat_126 ===
-Noé转头看了一眼摊主，又低头看向已经没有热气的拉面。Makoto仍看着自己的碗，细棍被咬出一道浅痕。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+Makoto夹住一根已经断开的面，把它在碗沿上又折短了一次。细棍仍稳稳停在嘴角。 #SPEAKER: narration #CLASS: environment #SCENE: defense
 * [继续 ▸] -> beat_127
 
 === beat_127 ===
-老板，再下一碗。少葱。扣子谢了。 #SPEAKER: noe #CLASS: character #SCENE: closing
+那是结果，不是理由。你在等我替你停。 #SPEAKER: noe #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_128
 
 === beat_128 ===
-摊主关掉水龙头，应了一声。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+Makoto端起碗喝了一口汤。放回桌面时，碗底正好落回原先那圈水渍里。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
 * [继续 ▸] -> beat_129
 
 === beat_129 ===
-这碗一口没动。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+先吃面。老板把你上周掉的扣子收了一周。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_130
 
 === beat_130 ===
-坨了。 #SPEAKER: noe #CLASS: character #SCENE: closing
+Noé低头看了一眼自己的碗。面条已经吸饱汤水，挤在一起。摊主仍背对着他们，手里的滤网却已经冲洗了太久。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
 * [继续 ▸] -> beat_131
 
 === beat_131 ===
-刚才这不影响结论。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+少一颗不影响闭合。 #SPEAKER: noe #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_132
 
 === beat_132 ===
-结论又不用嚼。 #SPEAKER: noe #CLASS: character #SCENE: closing
+他记得你少葱，也记得你的东西。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_133
 
 === beat_133 ===
-Makoto没有回答。镜片右上角的诊断状态保持绿色。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+一个熟客能提供的现金流，当然比脑子里那几比特存储值钱。 #SPEAKER: noe #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_134
 
 === beat_134 ===
-正常了。他没有撤回任何结论，只是把老板从“提供拉面的功能”恢复成了一个认识的人。重复的交易原来也会长出交易之外的东西。所谓persona，大概不是一张假脸，而是个人和社会签下的停火协议：我按你认得出的样子出现，你替我挡住穿帮的地方。戴得久了，脸会长成面具的形状，面具也会沾上脸的体温。过去人类把这叫会做人；现在厂家把它封装成情感桥，保修十二个月——不包括泡坨的面。 #SPEAKER: makoto #CLASS: thought #SCENE: closing
+OK。那今晚你要扮演冷血杀手。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_135
 
 === beat_135 ===
-Noé把旧碗推到桌角，筷子仍横放在原处。新面落进沸水，计时器亮起九十秒。摊主重新切葱，刀锋落在案板上的声音短而整齐。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+Noé没有接话。他把碗转了半圈，筷子仍横在桌上。风衣下摆的雨水沿椅脚落进排水槽。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
 * [继续 ▸] -> beat_136
 
 === beat_136 ===
-这次趁热。再聊坨了，算你自己的模块损耗。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+Makoto从鼻腔里笑了一声，继续吃面。摊主回头看见Noé没动的碗，手伸向碗沿，又停住。Makoto用筷尾在桌面轻敲两下，朝汤锅偏了偏下巴。摊主会意，从锅底舀起半勺滚汤。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
 * [继续 ▸] -> beat_137
 
 === beat_137 ===
-你也该扫一下自己的。 #SPEAKER: noe #CLASS: character #SCENE: closing
+Makoto夹住坨成一团的面，稍稍提起。热汤从面条间隙灌下去，白汽重新升起。摊主落勺，顺手把那片多送的叉烧压到最上面；Makoto松开筷子，将碗沿原来的水印推回Noé面前。两个人一句话也没有说。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
 * [继续 ▸] -> beat_138
 
 === beat_138 ===
-我刚修好你，你先学会感恩。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+再试一次。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_139
 
 === beat_139 ===
-不是情感桥。人格模块。 #SPEAKER: noe #CLASS: character #SCENE: closing
+温度恢复了。面筋断裂不可逆。 #SPEAKER: noe #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_140
 
 === beat_140 ===
-诊断依据？ #SPEAKER: makoto #CLASS: character #SCENE: closing
+Makoto把自己碗里的最后一小束面送入口中，拇指顺手抹掉碗沿的一点油。他把空碗向摊主的方向推了半寸，碗口正好避开桌面的接缝。摊主收走时，Makoto仍看着Noé。 #SPEAKER: narration #CLASS: environment #SCENE: pressure
 * [继续 ▸] -> beat_141
 
 === beat_141 ===
-也许从……you know when，就一直没恢复。 #SPEAKER: noe #CLASS: character #SCENE: closing
+你刚才的战斗模式关了？ #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_142
 
 === beat_142 ===
-Makoto从筷子纸套上重新叼起那根细棍。动作不快，也没有停顿。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+十三分钟前。 #SPEAKER: noe #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_143
 
 === beat_143 ===
-不然很难解释你怎么能当这么多年——such a giant asshole。 #SPEAKER: noe #CLASS: character #SCENE: closing
+我猜少关了一层。情感桥没回来。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_144
 
 === beat_144 ===
-吃你的面。 #SPEAKER: makoto #CLASS: character #SCENE: closing
+依据？ #SPEAKER: noe #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_145
 
 === beat_145 ===
-新碗被推到Noé面前。Noé掰开筷子，先夹起一小撮面。Makoto看着自己的汤底，镜片上没有任何可见变化。最内层却静默展开了一次本机深度诊断，检索范围越过现用人格配置，沿着封存履历一直回溯到那段没有名称、只有权限等级的战争记录。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+他在救你的面。你在算他的现金流。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_146
 
 === beat_146 ===
-> selfdiag persona_stack --deep #SPEAKER: system #CLASS: system #SCENE: closing
+也可能我只是终于算明白了。 #SPEAKER: noe #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_147
 
 === beat_147 ===
-> audit affect_history --from [CLASSIFIED] #SPEAKER: system #CLASS: system #SCENE: closing
+这就是理由。 #SPEAKER: makoto #CLASS: character #SCENE: pressure
 * [继续 ▸] -> beat_148
 
 === beat_148 ===
-PERSONA CORE: NORMAL #SPEAKER: system #CLASS: system #SCENE: closing
+Makoto没有回答。他把筷子平放在纸套上，镜片同时暗了一层，把摊位灯光压成灰白色。数个半透明窗口在镜面深处展开，Noé的义体轮廓被拆成骨骼、动力、神经和人格接口四层。 #SPEAKER: narration #CLASS: environment #SCENE: diagnostic
 * [继续 ▸] -> beat_149
 
 === beat_149 ===
-EMPATHY MODULE: NORMAL #SPEAKER: system #CLASS: system #SCENE: closing
+摊位上方的市政卫生信标每五秒广播一次检查凭证。Makoto的镜片截下一枚，把用途字段从“食品安全”改写成“义体维护”。凭证先闪红，随后变成绿色。Noé胸腔内部原本拒绝外部访问的端口逐层开放。 #SPEAKER: narration #CLASS: environment #SCENE: diagnostic
 * [继续 ▸] -> beat_150
 
 === beat_150 ===
-INTERPERSONAL AFFECT BRIDGE: NORMAL #SPEAKER: system #CLASS: system #SCENE: closing
+EMPATHY MODULE: HARDWARE ONLINE #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_151
 
 === beat_151 ===
-HISTORICAL FAULTS: NONE #SPEAKER: system #CLASS: system #SCENE: closing
+INTERPERSONAL AFFECT BRIDGE: DEADLOCKED #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_152
 
 === beat_152 ===
-Makoto关闭窗口，端起碗喝完最后一口汤。高架桥外的广告屏再次刷新同一张笑脸。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+SOCIAL SUBTEXT RESPONSE: NONE #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_153
 
 === beat_153 ===
-当天夜里，那间拉面摊出现在一座没有出口的黑色大厅里。雨停在塑料棚外，列车悬在高架桥上。国王、法庭、小丑与牛虻围着同一碗已经冷透的面，没有人坐在主位。每个人面前都亮着同一行绿色诊断：EMPATHY MODULE: NORMAL。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+SELF-AFFECT CHANNEL: NORMAL #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_154
 
 === beat_154 ===
-法官，把起诉书收起来。模块正常，是因为信号确实抵达了；是否服从信号，属于王座，不属于电路。把痛苦当成情报而不是命令，这叫主权。 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: closing
+COGNITIVE FALLBACK: ENABLED #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_155
 
 === beat_155 ===
-你把怯懦改名为主权，就以为获得了豁免。Noé无从选择；你有选择，却命令信号沉默。法庭审理的正是这部分差别。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
+AUTO-RECOVERY: FAILED #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_156
 
 === beat_156 ===
-判得漂亮。建议刻在墙上，让被告每晚撞一次。反正法官从不支付维修费。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
+CAUSE: COMBAT AFFECT-SUPPRESSION SESSION NOT RELEASED #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_157
 
 === beat_157 ===
-而你把每一次供词改成笑话，因为笑声结束以后，你就不必为真话签名。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
+TRIGGER: HOSTILE CYBERWARE EVENT / 00:14:32 AGO #SPEAKER: system #CLASS: system #SCENE: diagnostic
 * [继续 ▸] -> beat_158
 
 === beat_158 ===
-至少我承认自己在改名。国王把“害怕失去Noé”印成“关键人员风险”，还要盖一枚皇家钢印。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
+Makoto咬住嘴角的细棍，外层镜页微微偏转。镜片右侧出现一行命令。他的右手仍搭在桌沿，左手没有抬起。 #SPEAKER: narration #CLASS: environment #SCENE: reconnect
 * [继续 ▸] -> beat_159
 
 === beat_159 ===
-我的词让他活着。你的笑话和法官的鞭子，只让他更擅长藏起来。 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: closing
+> revoke affect_session #SPEAKER: system #CLASS: system #SCENE: reconnect
 * [继续 ▸] -> beat_160
 
 === beat_160 ===
-有趣。国王说共情是信号，法庭说共情是义务，小丑说共情是被改名的供词。可你们都把“正常”当作前提。如果结果与故障中的Noé相同，什么可观察的事实能够区分拒绝与缺失？ #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: closing
+> terminate affect_bridge #SPEAKER: system #CLASS: system #SCENE: reconnect
 * [继续 ▸] -> beat_161
 
 === beat_161 ===
-账单。坏掉的人送修，正常的人挨骂。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
+> reload personal_profile #SPEAKER: system #CLASS: system #SCENE: reconnect
 * [继续 ▸] -> beat_162
 
 === beat_162 ===
-区别是责任。能力存在，便不能再用缺陷替结果辩护。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
+> reconnect #SPEAKER: system #CLASS: system #SCENE: reconnect
 * [继续 ▸] -> beat_163
 
 === beat_163 ===
-那么，NORMAL不是健康证明，而是管辖权声明：它只证明这里有人可以被追责。可当一种拒绝持续得足够久，它在什么时候不再是选择，变成故障；又在什么时候不再是故障，被叫作一个人？ #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: closing
+INTERPERSONAL AFFECT BRIDGE: ONLINE #SPEAKER: system #CLASS: system #SCENE: reconnect
 * [继续 ▸] -> beat_164
 
 === beat_164 ===
-国王用指节叩响桌面，法庭起身反驳，小丑为双方鼓掌，牛虻等待他们再次偷换定义。没有第五张椅子，也没有一个置身事外的Makoto负责裁决；每一种辩护、指控、笑话和问题都声称自己就是他。争论声中，Makoto醒了。天还没有亮，隔墙传来Noé睡眠模拟器低而规律的运转声。镜片里的诊断结果仍然是绿色；第一次，那颜色不像健康，更像一份无法转交给故障的责任。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+Noé的视线短暂失焦。胸腔板缝里的琥珀色依次熄灭，又从锁骨向下重新亮起。筷尖从葱花上滑开，碰到碗壁，发出一声轻响。 #SPEAKER: narration #CLASS: environment #SCENE: reconnect
+* [继续 ▸] -> beat_165
+
+=== beat_165 ===
+Workshop 中，Makoto 在手术台上，用手粗暴地将自己后脑的一个模块强行拔下，瘫软在椅子上。 #SPEAKER: narration #CLASS: environment #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_166
+
+=== beat_166 ===
+Dude, why the fuck do you do that，就因为几句吃拉面时的闲聊，就要这么折磨你自己 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_167
+
+=== beat_167 ===
+It's called 控制变量，you ignorant fuck，科学技术的进步是由探索精神得到的 #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_168
+
+=== beat_168 ===
+Yeah，在脑子后面开一个洞，冒着被安全部警告，危险做实验，我们是为了帮他们改进 empathy module 的设计，和心理问题*没一点关系* #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_169
+
+=== beat_169 ===
+maybe this is time for review 一下我们的人格缺陷和 Empathy 的缺失了 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_170
+
+=== beat_170 ===
+去你妈的吧，羊毛卷头，自我审判对活着一点积极作用都没有 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_171
+
+=== beat_171 ===
+是的，闭嘴吧，我对这个不感兴趣 #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_172
+
+=== beat_172 ===
+哦 2 票反对了吗，那不好意思，我总是得站在真理的一边 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_173
+
+=== beat_173 ===
+我们之后再来处理你这个墙头草尖帽子，你们哪位天才还有什么别的办法去正当化这个疯狂的行为吗 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_174
+
+=== beat_174 ===
+我只能说这懦夫的行为和我无关 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_175
+
+=== beat_175 ===
+虽然我热爱探索，但我不得不承认这确实太疯狂了，而且得到的信息或许也*有限* #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_176
+
+=== beat_176 ===
+你们看着我干什么…好吧，如果，我是说假设，你们有没有一刻怀疑过你们的来源呢，咱们到底是寄存在 Ghost 的内部，还是只是被 Empathy Module 给模拟出来的人格碎片呢。那么，如果，我再次做假设，人格模块下线了，我们不就能够知道了吗，简答的控制变量，如你所述，大额头。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_177
+
+=== beat_177 ===
+从客观分析你大概也许以高置信度疯了 #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_178
+
+=== beat_178 ===
+不如说他一直是那个疯子，我提议制定政策将其驱逐 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_179
+
+=== beat_179 ===
+我会通过这条法令 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_180
+
+=== beat_180 ===
+Seriously，你们敢说没有一瞬间你们怀疑过这件事情？ #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_181
+
+=== beat_181 ===
+首先，这没有意义。其次，现在你能判断我们的讨论是出现在 Ghsot 里，还是那个铁盘子里的小塑料盒子里 #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: act-5-scene-1
+* [继续 ▸] -> beat_182
+
+=== beat_182 ===
+Fuck，If only 我们有感知现实世界的能力就好了。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: act-5-scene-1
 * [结束对话 ■] -> ending
 
 === ending ===
