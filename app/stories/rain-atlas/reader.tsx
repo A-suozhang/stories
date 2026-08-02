@@ -30,6 +30,13 @@ const speakers: Record<string, string> = {
   system: "SYSTEM",
 };
 
+const personaSpeakers: Record<string, string> = {
+  "machiavellian-king": "马基雅维利国王 / THE KING",
+  "inner-court": "内在法庭 / THE COURT",
+  "cynic-jester": "犬儒小丑 / THE JESTER",
+  "socratic-gadfly": "苏格拉底牛虻 / THE GADFLY",
+};
+
 const portraits: Record<string, PortraitSpec> = {
   makoto: {
     key: "makoto",
@@ -96,7 +103,7 @@ function portraitForLine(line?: InkLine): PortraitSpec | undefined {
   return portraits[line.speaker];
 }
 
-const TOTAL_STORY_LINES = 158;
+const TOTAL_STORY_LINES = 164;
 const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const sceneLabels: Record<string, string> = {
@@ -189,6 +196,46 @@ export default function Reader() {
     if (!story.canContinue && story.currentChoices.length === 0) setComplete(true);
   }, [readChoices, scene]);
 
+  const fastForwardToEnd = useCallback(() => {
+    const story = storyRef.current;
+    if (!story || complete) return;
+
+    const skippedLines: InkLine[] = [];
+    const idBase = Date.now();
+    let nextScene = scene;
+    let steps = 0;
+
+    while ((story.canContinue || story.currentChoices.length > 0) && steps < TOTAL_STORY_LINES * 4) {
+      steps += 1;
+      if (story.currentChoices.length > 0) {
+        story.ChooseChoiceIndex(story.currentChoices[0].index);
+      }
+
+      let paragraph = "";
+      while (story.canContinue && !paragraph) {
+        paragraph = story.Continue()?.trim() ?? "";
+      }
+
+      if (paragraph) {
+        const tags = parseTags(story.currentTags ?? []);
+        nextScene = tags.SCENE || nextScene;
+        skippedLines.push({
+          id: idBase + skippedLines.length,
+          text: paragraph,
+          speaker: tags.SPEAKER || "narration",
+          className: tags.CLASS || "narration",
+          scene: nextScene,
+          persona: tags.PERSONA || "",
+        });
+      }
+    }
+
+    setLines((current) => [...current, ...skippedLines]);
+    setScene(nextScene);
+    readChoices(story);
+    setComplete(!story.canContinue && story.currentChoices.length === 0);
+  }, [complete, readChoices, scene]);
+
   useEffect(() => {
     if (complete || lines.length === 0) {
       endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -276,6 +323,7 @@ export default function Reader() {
         <span className="reader-title">Ramen Talk: Empathy Module</span>
         <div className="reader-tools" aria-label="阅读设置">
           <button onClick={resetStory} aria-label="从头开始" title="从头开始">↺</button>
+          <button className="fast-forward" onClick={fastForwardToEnd} aria-label="快进到故事结尾" title="快进到故事结尾" disabled={complete}>≫</button>
           <button onClick={() => setFontSize((size) => Math.max(17, size - 1))} aria-label="缩小字号">A−</button>
           <button onClick={() => setFontSize((size) => Math.min(28, size + 1))} aria-label="放大字号">A+</button>
         </div>
@@ -316,11 +364,11 @@ export default function Reader() {
               const isEnvironment = line.speaker === "narration" || line.className === "environment";
               const linePortrait = portraitForLine(line);
               const speakerLabel = line.className === "thought"
-                ? `${speakers[line.speaker] || line.speaker} · 心声`
+                ? personaSpeakers[line.persona] || `${speakers[line.speaker] || line.speaker} · 心声`
                 : speakers[line.speaker] || line.speaker;
               return (
                 <article
-                  className={`ink-line speaker-${line.speaker} ${line.className} ${index === lines.length - 1 ? "current" : "past"}`}
+                  className={`ink-line speaker-${line.speaker} ${line.className} ${line.persona ? `persona-${line.persona}` : ""} ${index === lines.length - 1 ? "current" : "past"}`}
                   key={line.id}
                   ref={index === lines.length - 1 ? currentLineRef : undefined}
                   aria-label={isEnvironment ? "环境描写" : undefined}

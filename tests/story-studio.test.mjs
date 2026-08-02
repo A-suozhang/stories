@@ -21,7 +21,7 @@ test("round-trips the structured Markdown story", async () => {
 test("compiles the current Markdown into the complete progressive Ink story", async () => {
   const document = parseStoryDocument(await readFile(sourceUrl, "utf8"));
   const { ink, beatCount } = compileStoryToInk(document);
-  assert.equal(beatCount, 158);
+  assert.equal(beatCount, 164);
   assert.match(ink, /=== beat_001 ===[\s\S]*?等待比追踪更诚实[\s\S]*?#SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: counter/);
   assert.match(ink, /#SPEAKER: makoto #CLASS: character #SCENE: counter/);
   assert.match(ink, /#SPEAKER: noe #CLASS: character #SCENE: closing/);
@@ -32,8 +32,10 @@ test("compiles the current Markdown into the complete progressive Ink story", as
   assert.match(ink, /#PERSONA: inner-court/);
   assert.match(ink, /#PERSONA: cynic-jester/);
   assert.match(ink, /#PERSONA: socratic-gadfly/);
-  assert.match(ink, /他的薄情是故障，你的薄情被系统登记成了人格/);
-  assert.match(ink, /=== beat_158 ===[\s\S]*?愿不愿意让感觉改变自己[\s\S]*?\* \[结束对话 ■\] -> ending/);
+  assert.match(ink, /法官，把起诉书收起来/);
+  assert.match(ink, /国王把“害怕失去Noé”印成“关键人员风险”/);
+  assert.match(ink, /什么可观察的事实能够区分拒绝与缺失/);
+  assert.match(ink, /=== beat_164 ===[\s\S]*?无法转交给故障的责任[\s\S]*?\* \[结束对话 ■\] -> ending/);
   assert.match(ink, /HISTORICAL FAULTS: NONE/);
 });
 

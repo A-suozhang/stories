@@ -616,27 +616,51 @@ Makoto关闭窗口，端起碗喝完最后一口汤。高架桥外的广告屏�
 * [继续 ▸] -> beat_153
 
 === beat_153 ===
-当天夜里，Makoto梦见那间拉面摊被搬进一座没有出口的黑色大厅。雨停在塑料棚外，列车悬在高架桥上，四个与他共享轮廓的人围着同一碗已经冷透的面；桌边还留着第五张空椅。每个人面前都亮着同一行绿色诊断：EMPATHY MODULE: NORMAL。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+当天夜里，那间拉面摊出现在一座没有出口的黑色大厅里。雨停在塑料棚外，列车悬在高架桥上。国王、法庭、小丑与牛虻围着同一碗已经冷透的面，没有人坐在主位。每个人面前都亮着同一行绿色诊断：EMPATHY MODULE: NORMAL。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [继续 ▸] -> beat_154
 
 === beat_154 ===
-正常只说明你有能力，不代表你有义务。感到别人的痛苦是一条情报；不让它左右决策，才是活下来。Noé失去了信号，你只是拒绝服从信号。 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: closing
+法官，把起诉书收起来。模块正常，是因为信号确实抵达了；是否服从信号，属于王座，不属于电路。把痛苦当成情报而不是命令，这叫主权。 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: closing
 * [继续 ▸] -> beat_155
 
 === beat_155 ===
-所以他的冷漠可以归因于故障，你的却不行。他不能回应；你能够回应，却一次次选择不回应。结果相同，不代表责任相同。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
+你把怯懦改名为主权，就以为获得了豁免。Noé无从选择；你有选择，却命令信号沉默。法庭审理的正是这部分差别。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
 * [继续 ▸] -> beat_156
 
 === beat_156 ===
-Noé坏掉需要维修，你保持正常只需要改名：把关心叫维护成本，把害怕叫风险评估，把薄情叫清醒。词换完了，仪表盘当然全是绿色。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
+判得漂亮。建议刻在墙上，让被告每晚撞一次。反正法官从不支付维修费。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
 * [继续 ▸] -> beat_157
 
 === beat_157 ===
-如果共情信号存在，却从不抵达行动，共情模块究竟正常在哪里？你和故障中的Noé之间，是否只剩一个区别——他的薄情是故障，你的薄情被系统登记成了人格？ #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: closing
+而你把每一次供词改成笑话，因为笑声结束以后，你就不必为真话签名。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
 * [继续 ▸] -> beat_158
 
 === beat_158 ===
-四张脸同时转向空椅。Makoto在答案出现以前醒来，天还没有亮。隔墙传来Noé睡眠模拟器低而规律的运转声；他知道那声音意味着对方还活着，也知道自己因此松了一口气。镜片里的诊断结果仍然是绿色。他没有再次运行自检，因为第一次，他怀疑系统测量的只是一个人能不能感到，而不是愿不愿意让感觉改变自己。 #SPEAKER: narration #CLASS: environment #SCENE: closing
+至少我承认自己在改名。国王把“害怕失去Noé”印成“关键人员风险”，还要盖一枚皇家钢印。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
+* [继续 ▸] -> beat_159
+
+=== beat_159 ===
+我的词让他活着。你的笑话和法官的鞭子，只让他更擅长藏起来。 #SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: closing
+* [继续 ▸] -> beat_160
+
+=== beat_160 ===
+有趣。国王说共情是信号，法庭说共情是义务，小丑说共情是被改名的供词。可你们都把“正常”当作前提。如果结果与故障中的Noé相同，什么可观察的事实能够区分拒绝与缺失？ #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: closing
+* [继续 ▸] -> beat_161
+
+=== beat_161 ===
+账单。坏掉的人送修，正常的人挨骂。 #SPEAKER: makoto #CLASS: thought #PERSONA: cynic-jester #SCENE: closing
+* [继续 ▸] -> beat_162
+
+=== beat_162 ===
+区别是责任。能力存在，便不能再用缺陷替结果辩护。 #SPEAKER: makoto #CLASS: thought #PERSONA: inner-court #SCENE: closing
+* [继续 ▸] -> beat_163
+
+=== beat_163 ===
+那么，NORMAL不是健康证明，而是管辖权声明：它只证明这里有人可以被追责。可当一种拒绝持续得足够久，它在什么时候不再是选择，变成故障；又在什么时候不再是故障，被叫作一个人？ #SPEAKER: makoto #CLASS: thought #PERSONA: socratic-gadfly #SCENE: closing
+* [继续 ▸] -> beat_164
+
+=== beat_164 ===
+国王用指节叩响桌面，法庭起身反驳，小丑为双方鼓掌，牛虻等待他们再次偷换定义。没有第五张椅子，也没有一个置身事外的Makoto负责裁决；每一种辩护、指控、笑话和问题都声称自己就是他。争论声中，Makoto醒了。天还没有亮，隔墙传来Noé睡眠模拟器低而规律的运转声。镜片里的诊断结果仍然是绿色；第一次，那颜色不像健康，更像一份无法转交给故障的责任。 #SPEAKER: narration #CLASS: environment #SCENE: closing
 * [结束对话 ■] -> ending
 
 === ending ===

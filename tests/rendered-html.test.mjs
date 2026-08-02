@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
+import { Story } from "inkjs";
 
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -34,6 +35,28 @@ test("server-renders the progressive story route", async () => {
   assert.match(html, /Ramen Talk:/);
   assert.match(html, /Empathy Module/);
   assert.match(html, /开始对话/);
+  assert.match(html, /快进到故事结尾/);
+});
+
+test("fast-forwards the linear Ink runtime to its ending", async () => {
+  const content = JSON.parse(await readFile(new URL("../content/stories/rain-atlas/story.json", import.meta.url), "utf8"));
+  const story = new Story(content);
+  const paragraphs = [];
+  let steps = 0;
+
+  while (story.canContinue && story.currentChoices.length === 0) story.Continue();
+  while ((story.canContinue || story.currentChoices.length > 0) && steps < 1000) {
+    steps += 1;
+    if (story.currentChoices.length > 0) story.ChooseChoiceIndex(story.currentChoices[0].index);
+    let paragraph = "";
+    while (story.canContinue && !paragraph) paragraph = story.Continue()?.trim() ?? "";
+    if (paragraph) paragraphs.push({ paragraph, tags: story.currentTags });
+  }
+
+  assert.equal(paragraphs.length, 164);
+  assert.match(paragraphs.at(-1).paragraph, /无法转交给故障的责任/);
+  assert.equal(story.canContinue, false);
+  assert.equal(story.currentChoices.length, 0);
 });
 
 test("keeps editable progressive Ink with scrollable dialogue history", async () => {
@@ -57,9 +80,9 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(ink, /#SCENE: diagnostic/);
   assert.match(ink, /#SCENE: reconnect/);
   assert.match(ink, /=== beat_001 ===[\s\S]*?等待比追踪更诚实[\s\S]*?#SPEAKER: makoto #CLASS: thought #PERSONA: machiavellian-king #SCENE: counter/);
-  assert.match(ink, /=== beat_157 ===[\s\S]*?\* \[继续 ▸\] -> beat_158/);
-  assert.match(ink, /他的薄情是故障，你的薄情被系统登记成了人格/);
-  assert.match(ink, /=== beat_158 ===[\s\S]*?愿不愿意让感觉改变自己[\s\S]*?\* \[结束对话 ■\] -> ending/);
+  assert.match(ink, /=== beat_163 ===[\s\S]*?\* \[继续 ▸\] -> beat_164/);
+  assert.match(ink, /什么可观察的事实能够区分拒绝与缺失/);
+  assert.match(ink, /=== beat_164 ===[\s\S]*?无法转交给故障的责任[\s\S]*?\* \[结束对话 ■\] -> ending/);
   assert.match(reader, /lines\.map\(\(line, index\)/);
   assert.match(reader, /const isEnvironment = line\.speaker === "narration" \|\| line\.className === "environment"/);
   assert.match(reader, /const speakerLabel = line\.className === "thought"/);
@@ -69,7 +92,17 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(reader, /speaker-\$\{line\.speaker\}/);
   assert.match(reader, /index === lines\.length - 1 \? "current" : "past"/);
   assert.match(reader, /useState\(21\)/);
-  assert.match(reader, /const TOTAL_STORY_LINES = 158/);
+  assert.match(reader, /const TOTAL_STORY_LINES = 164/);
+  assert.match(reader, /马基雅维利国王 \/ THE KING/);
+  assert.match(reader, /内在法庭 \/ THE COURT/);
+  assert.match(reader, /犬儒小丑 \/ THE JESTER/);
+  assert.match(reader, /苏格拉底牛虻 \/ THE GADFLY/);
+  assert.match(reader, /personaSpeakers\[line\.persona\]/);
+  assert.match(reader, /const fastForwardToEnd = useCallback/);
+  assert.match(reader, /story\.currentChoices\[0\]\.index/);
+  assert.match(reader, /setLines\(\(current\) => \[\.\.\.current, \.\.\.skippedLines\]\)/);
+  assert.match(reader, /aria-label="快进到故事结尾"/);
+  assert.match(reader, /disabled=\{complete\}/);
   assert.doesNotMatch(reader, /ink-portrait|tags\.PORTRAIT/);
   assert.match(reader, /星沢真｜Makoto Hoshizawa/);
   assert.match(reader, /makoto-hoshizawa-profile\.png/);
@@ -108,9 +141,14 @@ test("keeps editable progressive Ink with scrollable dialogue history", async ()
   assert.match(styles, /\.speaker-portrait-inline \{[\s\S]*?display: block;/);
   assert.match(styles, /\.ink-line\.speaker-makoto \.ink-copy strong \{ color: var\(--makoto-name\); \}/);
   assert.match(styles, /\.ink-line\.speaker-noe \.ink-copy strong \{ color: var\(--noe-name\); \}/);
+  assert.match(styles, /\.ink-line\.persona-machiavellian-king \.ink-copy strong/);
+  assert.match(styles, /\.ink-line\.persona-inner-court \.ink-copy strong/);
+  assert.match(styles, /\.ink-line\.persona-cynic-jester \.ink-copy strong/);
+  assert.match(styles, /\.ink-line\.persona-socratic-gadfly \.ink-copy strong/);
   assert.match(styles, /\.ink-line\.environment \.ink-copy/);
   assert.match(styles, /\.ink-line\.thought \.ink-copy/);
   assert.match(styles, /\.speaker-portrait-dock--makoto-thought img/);
+  assert.match(styles, /\.reader-tools button\.fast-forward/);
   assert.match(packageJson, /"inkjs"/);
   assert.match(packageJson, /"story:compile"/);
 });

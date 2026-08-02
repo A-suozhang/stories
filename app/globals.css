@@ -175,6 +175,9 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
 .reader-tools { justify-self: end; display: flex; align-items: center; gap: 8px; }
 .reader-tools button { width: 34px; height: 34px; color: rgba(245,245,239,.74); border: 1px solid rgba(245,245,239,.16); border-radius: 50%; background: rgba(10,12,11,.35); cursor: pointer; }
 .reader-tools button:hover, .reader-tools button:focus-visible { color: white; border-color: rgba(245,245,239,.5); outline: none; }
+.reader-tools button.fast-forward { color: color-mix(in srgb, var(--de-red) 78%, white); font-size: 17px; line-height: 1; }
+.reader-tools button:disabled { opacity: .28; cursor: default; }
+.reader-tools button:disabled:hover { color: inherit; border-color: rgba(245,245,239,.16); }
 .reader-progress { position: fixed; z-index: 40; top: 0; left: 0; height: 2px; background: var(--de-red); transition: width .15s linear; }
 .reader-layout {
   --dialogue-width: min(760px, calc(100vw - 200px));
@@ -339,6 +342,10 @@ footer { padding: 35px clamp(24px, 7vw, 110px); border-top: 1px solid var(--line
 }
 .ink-line.speaker-makoto .ink-copy strong { color: var(--makoto-name); }
 .ink-line.speaker-noe .ink-copy strong { color: var(--noe-name); }
+.ink-line.persona-machiavellian-king .ink-copy strong { color: #c1a36b; }
+.ink-line.persona-inner-court .ink-copy strong { color: #b8c2bd; }
+.ink-line.persona-cynic-jester .ink-copy strong { color: #b28aa7; }
+.ink-line.persona-socratic-gadfly .ink-copy strong { color: #79cfc4; }
 .ink-line.voice .ink-copy strong { color: #705cbb; }
 .ink-line.system .ink-copy strong { color: #e4b934; }
 .ink-line.task .ink-copy, .ink-line.task .ink-copy strong { color: var(--de-green); }
